@@ -1,0 +1,2 @@
+l'information en quantique 
+Question de recherche : comment le bruit physique détruit l’information quantique, comment on le mesure sur une vraie machine, et à partir de quand un code correcteur d’erreurs fait gagner de la fiabilité ? Et combien coûte la simulation correspondante sur CPU et sur GPU ?
