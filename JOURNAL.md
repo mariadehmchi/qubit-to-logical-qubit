@@ -17,3 +17,11 @@ premier jour
 ### Interprétation physique et ingénierie
 - Un tirage unique ou un petit nombre de mesures ne révèle pas directement la probabilité théorique : il faut répéter l'expérience (*shots*) pour estimer la distribution de mesure.
 - Cette logique de répétition et d'incertitude statistique sera la même lorsqu'on passera à des simulations plus lourdes (matrices densité, bruit, simulation sur GPU) ou à des mesures sur du matériel quantique réel.
+Pour P(0) = 0,3600, j'obtiens 0,3640 à 1 000 tirs (écart 0,0040) et 0,3585 à 100 000 tirs (écart 0,0015), conformément à la décroissance de l'incertitude en 1/√n.
+La fréquence empirique converge vers la probabilité théorique quand le nombre de mesures augmente, tout en gardant de petites fluctuations aléatoires.
+ Ma prédiction pour les trois affichages de 02_gates.py :
+ X|0> : échange les amplitudes de |0> = (1.0, 0.0), donc on attend (0.0, 1.0) (soit |1>).H|0> : crée une superposition équilibrée (1/√2, 1/√2) = (0.7071, 0.7071), avec des probabilités (0.5, 0.5).HH|0> : appliquer H deux fois de suite ramène par interférence à |0> = (1.0, 0.0), avec des probabilités (1.0, 0.0).
+ ### Observations — Portes X et Hadamard (`02_gates.py`)
+- `X|0>` donne `[0. 1.]` (`|1>`), conforme à la prédiction (inversion de l'état de base).
+- `H|0>`donne `[0.70710678 0.70710678]` (`1/√2`), avec des probabilités d'environ `0.5` (`0.4999999999999999` à cause de l'arrondi flottant `float64`)[cite: 1, 2].
+- `HH|0>` ramène à `[1.00000000e+00 2.23711432e-17]`, soit `|0>` avec une probabilité `~1.0` (`0.9999999999999996`) et une probabilité résiduelle de `5.00e-34` (interférence constructive sur `|0>`, destructive sur `|1>`, aux erreurs d'arrondi numérique près).
